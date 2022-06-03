@@ -21,7 +21,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.COPY_FILES_ACROSS_REPO }}
       with:
-        source_file: docs/*.txt
+        source_file: "docs/f1.txt"
         destination_repo: 'Lightbridge-KS/test-cp-to-branch'
         destination_branch: output
         destination_folder: 'docs'
