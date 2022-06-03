@@ -1,0 +1,30 @@
+name: Push File
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'docs/f1.txt'
+        destination_repo: 'Lightbridge-KS/test-cp-to-branch'
+        destination_branch: output
+        destination_folder: 'docs'
+        user_email: 'ki11ip0.s.a.s@gmail.com'
+        user_name: 'Lightbridge-KS'
+        commit_message: 'Copied file to branch'
